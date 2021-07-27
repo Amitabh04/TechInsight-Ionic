@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "TechInsightIonic",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

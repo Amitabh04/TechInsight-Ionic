@@ -1,0 +1,7 @@
+{
+  "name": "TechInsightIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

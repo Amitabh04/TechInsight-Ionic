@@ -39,24 +39,27 @@
 
     <ion-footer  >
     <ion-toolbar class="text-icon-color">
-     <ion-grid>
-     <ion-row class="center-align">
+     <ion-grid >
+     <ion-row >
          
-         <ion-col size="1.6">
-   <i class="fa fa-step-backward"></i>
-         </ion-col>
+         <div class="footer-icon">
+             
+   <i class=" icon-color fas fa-step-backward"></i>
+       
+         </div>
 
-         <ion-col  size="1.6">
-             <i class="fa fa-caret-left"></i>
-         </ion-col>
+         <div class="footer-icon" >
+             <i  class="icon-color fas fa-caret-left"></i>
+         </div>
 
-         <ion-col  size="1.6">
-             <i class="fa fa-redo-alt"></i>
-         </ion-col>
+ 
+         <div class="footer-icon" >
+             <i class="icon-color fas fa-redo-alt"></i>
+         </div>
 
+   <ion-col size="2"></ion-col>
 
-
-   <ion-col  size="4">
+   <ion-col class="footer-icon" size="2">
     <ion-select  interface="popover" value="1">
                         <ion-select-option selected>1</ion-select-option>
                         <ion-select-option >2</ion-select-option>
@@ -65,15 +68,18 @@
                 </ion-select>
                     </ion-col>
 
+                    
+                    <ion-col size="2"></ion-col>
 
 
-         <ion-col  size="1.6">
-             <i class="fa fa-caret-left"></i>
-         </ion-col>
 
-         <ion-col  size="1.6">
-             <i class="fa fa-redo-alt"></i>
-         </ion-col>
+          <div class="footer-icon" >
+             <i class="icon-color fas fa-caret-right"></i>
+          </div>
+
+         <div class="footer-icon">
+             <i class="icon-color fas fa-step-forward"></i>
+         </div>
 
      </ion-row>
      </ion-grid>
@@ -123,11 +129,6 @@ export default defineComponent({
 
 <style lang="css">
 
-ion-toolbar {
-    max-height: 50px;
-    width: 100%;
-}
-
 
 
 ion-title{
@@ -158,22 +159,40 @@ ion-select{
   color: black;
     background-color: white;
     border-radius: 40%;
-   
     max-height: 35px;
-    max-width: 70px;
+    max-width: 350px;
+    
 }
 
-.footer-icon > i {
-    position: relative;
-    top: 5px;
-   
+.footer-icon {
+    height: 35px;
+    width: 35px;
+    border-radius: 17.5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    background-color: #fff;
+    justify-content: center;
+    
+    /* justify-content: center; */
+
+}
+
+.pagination-icons{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+
+
 }
 
 
 .center-align{
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .list-item{
@@ -185,5 +204,21 @@ ion-select{
 ion-item{
      vertical-align: middle;
 }
+
+.icon-color{
+  color: black;
+  max-height: 35px;
+  max-width: 35px;
+}
+
+.icon-background{
+  color: red;
+  background-color: white;
+  max-height: 50px;
+  max-width: 50px;
+  text-align: center;
+}
+.div-margin{}
+
 
 </style>

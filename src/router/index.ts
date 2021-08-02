@@ -31,15 +31,15 @@ const routes: Array<RouteRecordRaw> = [
 
 
 
-  // {
-  //   path: '/',
-  //   redirect: '/auth/login'
-  // },
-  // {
-  //   path: '/auth/login',
-  //   name: 'Login',
-  //   component: Login
-  // },
+  {
+    path: '/',
+    redirect: '/auth/login'
+  },
+  {
+    path: '/auth/login',
+    name: 'Login',
+    component: Login
+  },
   // {
   //   path: '/home',
   //   name: 'Home',
@@ -60,18 +60,18 @@ const routes: Array<RouteRecordRaw> = [
   //   // meta: { requiredAuth: true },
   // },
 
-  {
-      path: '/',
-      redirect: '/tickets'
-    },
+  // {
+  //     path: '/',
+  //     redirect: '/tickets'
+  //   },
   
 
-  {
-    path: '/tickets',
-    name: 'Ticket',
-    component: TicketList,
-    // meta: { requiredAuth: true },
-  },
+  // {
+  //   path: '/tickets',
+  //   name: 'Ticket',
+  //   component: TicketList,
+  //   // meta: { requiredAuth: true },
+  // },
   // {
   //   path: '/project/ticketDetail',
   //   name: 'TicketDetail',

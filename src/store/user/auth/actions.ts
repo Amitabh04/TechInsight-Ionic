@@ -36,6 +36,11 @@ export const authActions: ActionTree<{ auth: IAuthState }, any> = {
           loading.dismiss()
           apiInit({ token: data.api_token })
           store.dispatch(USER_ACTIONS.USER_GET)
+
+          //
+
+          store.dispatch(USER_ACTIONS.USER_GET)
+          //
           router.push('/project')
         }
         

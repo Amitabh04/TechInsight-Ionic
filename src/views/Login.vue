@@ -53,10 +53,13 @@
 </template>
 
 <script lang="ts">
+
+
+
 import { defineComponent } from 'vue';
-import { config } from "@/services/core/config";
-import { AUTH_ACTIONS } from '@/store/user/auth/actions';
+import { config } from "@/services/core/config"
 import { useStore } from '@/store';
+import { AUTH_ACTIONS } from '@/store/user/auth/actions';
 
 export default defineComponent({
     name: 'Login',

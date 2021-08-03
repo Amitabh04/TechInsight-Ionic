@@ -6,9 +6,7 @@
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary">
-      <ion-button>
-      <i class="far fa-cog fa-lg"></i>
-      </ion-button>
+      <ion-menu-button auto-hide="false" menu="rightBar"><i class="far fa-cog fa-lg"></i></ion-menu-button>
     </ion-buttons>
     <ion-title>Projects</ion-title>
   </ion-toolbar>

@@ -1,16 +1,20 @@
 <template>
-    <div class="view">
-        <div class="header">
-            <button type="button" class="btn btn-primary h-100" @click="openSheet">Menu</button>
-        </div>
-        <div class="content">
-            <div class="long-content bg-secondary"></div>
-            <div class="long-content bg-warning"></div>
-        </div>
-        <div class="footer">
-            <h1>Footer</h1>
-        </div>
-    </div>
+        <ion-menu side="start" menu-id="first" content-id="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Start Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 </template>
 
 <script lang="ts">
@@ -22,7 +26,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="css">
 .view {
     height: 100%;
     display: flex;

@@ -1,7 +1,8 @@
 import ITicketState from '@/models/ITicket';
 
 const state: ITicketState = {
-        segments: {}
+        segments: [],
+        records: []
 };
 
 export const ticketState = { ticket: state }

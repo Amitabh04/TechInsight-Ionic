@@ -13,7 +13,7 @@
            
               </ion-col>
               <ion-col  size="10">
-            <ion-input  placeholder="Email" type="email"></ion-input>
+            <ion-input placeholder="Email" type="email" v-model="email"></ion-input>
             </ion-col>
         </ion-row>
         </ion-card>
@@ -24,7 +24,7 @@
               <i class="icons fa fa-lock"></i>
               </ion-col>
               <ion-col  size="10">
-            <ion-input  placeholder="Password" type="password"></ion-input>
+            <ion-input  placeholder="Password" type="password" v-model="password" required></ion-input>
             </ion-col>
         </ion-row>
         </ion-card>
@@ -35,9 +35,11 @@
         <ion-label>Remember me</ion-label>
 </div >
 
-   <ion-button  fill="white">
-      
-       Sign In</ion-button>
+
+  
+   <ion-button @click= "login(email, password)"  fill="white">
+          <i class="fas fa-sign-in"></i>
+        Sign In</ion-button>
 
    <ion-label style="margin-top:20px;">OR CONNECT WITH</ion-label>
 
@@ -51,23 +53,37 @@
 </template>
 
 <script lang="ts">
+
+
+
 import { defineComponent } from 'vue';
-import { config } from "@/services/core/config";
+import { config } from "@/services/core/config"
+import { useStore } from '@/store';
+import { AUTH_ACTIONS } from '@/store/user/auth/actions';
 
 export default defineComponent({
     name: 'Login',
     data() {
         return {
             version: `${config.version}${config.environment.ENVIRONMENT}`,
-            email: '',
-            password: '',
+            email: 'Mohammed.Akram@amdocs.com',
+            password: 'Mak@010721',
         }
     },
      methods: {
-      
+        //login()  {
+            
+            // console.log('email', store);
+            // store.dispatch(AUTH_ACTIONS.AUTH_LOGIN, { email: this.email, password: this.password })
+        // }
+    },
+    setup() {
+        const store = useStore();
+        console.log('store', store.state.auth);
+        const login = (email: string, password: string) =>  store.dispatch(AUTH_ACTIONS.AUTH_LOGIN, { email, password })
+ 
+        return {login}
     }
-  
-    
 });
 </script>
 
@@ -76,6 +92,10 @@ export default defineComponent({
 ion-col{
     text-align: start;
     
+}
+
+ion-content {
+    max-height: 100% !important;
 }
 
 

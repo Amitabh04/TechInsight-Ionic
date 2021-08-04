@@ -1,5 +1,6 @@
 export default interface ITicketState {
         segments: any; //ITicketSegment[]
+        records: any;
 }
 
 

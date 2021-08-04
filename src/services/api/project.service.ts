@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
-import { config } from "../core/config";
 
-function getUser () {
+
+function getProjects () {
     try {
-        return axios.get(`/users/me`)
+        return axios.get(`/api/projects`)
     } catch(e) {
        return Promise.reject(e)
     }
@@ -12,7 +12,5 @@ function getUser () {
 
 
 export {
-    getUser
+    getProjects
 }
-
-

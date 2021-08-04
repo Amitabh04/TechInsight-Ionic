@@ -10,4 +10,7 @@ export const ticketMutations: MutationTree<{ ticket: ITicketState }> = {
     [TICKET_MUTATIONS.TICKET_SEGMENT_SET](state, payload: ITicketSegment[]) {
         state.ticket.segments = payload
     },
+    [TICKET_MUTATIONS.TICKET_SET](state, payload: ITicketRes) {
+        state.ticket.records = payload
+    },
 };

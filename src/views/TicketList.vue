@@ -14,30 +14,20 @@
   </div>
   <ion-toolbar class="ticket-segment-container">
   <ion-segment @ionChange="segmentChanged($event)" scrollable value="1">
-            <ion-segment-button value="1" >
-              <div style="border-bottom: solid 1px #52b6f9" class="ticket-inner">
+            <ion-segment-button :value="i" v-for="(s, i) in segment" :key="i">
+              <div :style="{'--color': s.color}" class="ticket-inner">
               <ion-label>Check-in Request(New)</ion-label>
               </div>
             </ion-segment-button>
-        <ion-segment-button value="2">
-          <div style="border-bottom: solid 1px #52b6f9" class="ticket-inner">
-              <ion-label>Rejected Check-in</ion-label>
-              </div>
-        </ion-segment-button>
-        <ion-segment-button value="3">
-          <div style="border-bottom: solid 1px #52b6f9" class="ticket-inner">
-              <ion-label>Check-in Approval</ion-label>
-              </div>
-        </ion-segment-button>
       </ion-segment>
   </ion-toolbar>
   <ion-content class="ticket-content">
-      <ion-card class="ticket-card">
-        <div class="ticket-badge">check-in Request(New)</div>
+      <ion-card class="ticket-card" v-for="(t, i) in tickets" :key="i" :style="{'--color': t.ticket_status_color  }">
+        <div class="ticket-badge" :style="{'--color': t.ticket_status_color}">{{t.ticket_status_name}}</div>
         <ion-card-header>
           <ion-card-subtitle>13 hours ago</ion-card-subtitle>
           <div class="ticket-card-bottom">
-            <ion-card-title>NM01021B-Anchor</ion-card-title>
+            <ion-card-title>{{t.ticket_identity}}</ion-card-title>
             <div class="ticket-actions">
               <div>
                 <i class="fal fa-ellipsis-v"></i>
@@ -50,6 +40,8 @@
 </template>
 
 <script lang="ts">
+import { store, useStore } from '@/store';
+import { TICKET_ACTIONS } from '@/store/ticket/actions';
 import { defineComponent } from 'vue';
 
 
@@ -57,24 +49,19 @@ export default defineComponent({
     name: 'TicketList',
     data () {
         return {
-            segment: [
-                { name: 'Check-In Request(New)', color: '#52b6f9' },
-                { name: 'Check-In Approval', color: '#f39c12' },
-                { name: 'Pre-Check', color: '#f39c12' },
-                { name: 'Pre-Check Validation', color: '#f39c12' },
-                { name: 'Nest-Active', color: '#e74c3c' },
-                { name: 'Reject-Check Out', color: '#ff6a5a' }
-            ],
-            tickets: [
-                { name: 'IE04443A-Anchor', color: '#52b6f9' },
-                // { name: 'IE04443B-Anchor', color: '#f39c12' },
-                // { name: 'IE04443C-Anchor', color: '#f39c12' },
-                // { name: 'IE04443D-Anchor', color: '#f39c12' },
-                // { name: 'IE04443E-Anchor', color: '#e74c3c' },
-                // { name: 'IE04443F-Anchor', color: '#ff6a5a' }
-            ]
+            segment: store.state.ticket.segments,
+            tickets: store.state.ticket.records.items
         }
     },
+    setup () {
+      const store = useStore();
+      console.log('store', store.state);
+      
+      setTimeout(() => {
+        store.dispatch(TICKET_ACTIONS.TICKET_GET_SEGMENT)
+        store.dispatch(TICKET_ACTIONS.TICKET_GET)
+      })
+    }
     
 
 });
@@ -109,6 +96,14 @@ ion-content.ticket-content {
   padding-bottom: 10px;
   border-bottom: #ccc solid 1px;
 }
+.ticket-segment-container ion-segment {
+  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  --padding-end: 0px !important;
+   -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .ticket-segment-container ion-segment ion-segment-button {
   color: #333;
   font-size: 12px;
@@ -118,6 +113,7 @@ ion-content.ticket-content {
 .ticket-inner {
   text-align: center;
   padding-bottom: 5px;
+  border-bottom: 3px solid var(--color) !important;
 }
 .ticket-top-contaiber {
     display: flex;
@@ -140,7 +136,7 @@ ion-segment ion-segment-button{
 }
 
 .ticket-card {
-  border-top: #52b6f9 solid 3px;
+  border-top: var(--color) solid 3px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -150,7 +146,7 @@ ion-segment ion-segment-button{
   right: 0px;
   top:0px;
   padding-inline: 6px;
-  background-color: #52b6f9;
+  background-color: var(--color);
   color: #fff;
   border-bottom-left-radius: 3px;
 }

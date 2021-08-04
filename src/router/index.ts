@@ -44,12 +44,15 @@ const router = createRouter({
 })
 
 function guard(to: any, from: any, next: any, authData: IAuthState) {
+  
   if (to.meta && to.meta.requiredAuth) {
     if (authData && authData.token) {
+      apiInit({ token: authData.token  })
       return next();
     }
     return next({ path: "/auth/login" });
   } else {
+    
     if (authData && authData.token) {
       apiInit({ token: authData.token  })
       return next({ path: "/project" });

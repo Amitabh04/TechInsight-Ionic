@@ -5,6 +5,7 @@ import storeAuth from './user/auth';
 import VuexPersistence from 'vuex-persist'
 import storeUser from './user';
 import storeTicket from './ticket';
+import storeProject from './project';
 
 const vuexLocal = new VuexPersistence<IRootState>({
     storage: window.localStorage
@@ -14,17 +15,20 @@ export const store = createStore<IRootState>({
     state: {
         ...storeAuth.state,
         ...storeUser.state,
-        ...storeTicket.state
+        ...storeTicket.state,
+        ...storeProject.state
     }, 
     mutations: {
         ...storeAuth.mutations,
         ...storeUser.mutations,
-        ...storeTicket.mutations
+        ...storeTicket.mutations,
+        ...storeProject.mutations
     },
     actions: {
         ...storeAuth.actions,
         ...storeUser.actions,
-        ...storeTicket.actions
+        ...storeTicket.actions,
+        ...storeProject.actions
     },
     plugins: [vuexLocal.plugin]
 });

@@ -116,13 +116,13 @@ export default defineComponent({
     const appPages = [
       {
         title: 'Project',
-        url: '/folder/Inbox',
+        url: '/project',
         iosIcon: mailOutline,
         mdIcon: mailSharp
       },
       {
         title: 'Ticket',
-        url: '/folder/Inbox',
+        url: '/project/tickets',
         iosIcon: mailOutline,
         mdIcon: mailSharp
       },

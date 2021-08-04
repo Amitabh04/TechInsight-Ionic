@@ -66,8 +66,8 @@ export default defineComponent({
     data() {
         return {
             version: `${config.version}${config.environment.ENVIRONMENT}`,
-            email: 'Mohammed.Akram@amdocs.com',
-            password: 'Mak@010721',
+            email: '',
+            password: '',
         }
     },
      methods: {
